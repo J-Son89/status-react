@@ -23,6 +23,10 @@ pipeline {
     ))
     /* Allows combined build to copy */
     copyArtifactPermission('/status-react/*')
+    /* Abort old PR builds. */
+    disableConcurrentBuilds(
+      abortPrevious: isPRBuild
+    )
   }
 
   environment {
@@ -43,7 +47,6 @@ pipeline {
         script {
           btype = utils.getBuildType()
           print "Running ${btype} build!"
-          jenkins.abortPreviousRunningBuilds()
           /* Cleanup and Prep */
           commonPrep(btype)
         }
@@ -124,3 +127,6 @@ pipeline {
     always { sh 'make _fix-node-perms' }
   }
 }
+
+/* Options section can't access functions in objects. */
+def isPRBuild = utils.isPRBuild()
