@@ -1293,6 +1293,18 @@
      (multiaccounts/displayed-photo contact))))
 
 (re-frame/reg-sub
+ :contacts/name-and-photo
+ :<- [:contacts/contacts]
+ :<- [:multiaccount]
+ (fn [[contacts multiaccount] [_ id]]
+   (let [contact (or (get contacts id)
+                     (when (= id (:public-key multiaccount))
+                       multiaccount)
+                     (contact.db/public-key->new-contact id))]
+     {:name  (multiaccounts/displayed-name contact)
+      :photo (multiaccounts/displayed-photo contact)})))
+
+(re-frame/reg-sub
  :chats/unread-messages-number
  :<- [:chats/home-list-chats]
  (fn [chats _]
