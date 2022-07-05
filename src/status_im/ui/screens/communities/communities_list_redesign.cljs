@@ -349,10 +349,8 @@
           [topbar/topbar
            {:navigation      :none
             :left-component  [react/view {:margin-left 20}
-                              [react/view
-                               [photos/photo
-                                (multiaccounts/displayed-photo multiaccount)
-                                {:size 40}]]]
+                              [photos/photo (multiaccounts/displayed-photo multiaccount)
+                               {:size 32}]]
             :right-component [react/view {:flex-direction :row
                                           :margin-right 20}
                               [qr-scanner]

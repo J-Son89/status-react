@@ -1,6 +1,6 @@
 (ns status-im.ui.screens.communities.sort-communities-redesign
   (:require [re-frame.core :as re-frame]
-            [quo2.components.item-redesign :as list-item]
+            [quo2.components.item :as list-item]
             [quo2.components.text :as text]
             [quo2.foundations.typography :as typography]
             [quo2.foundations.colors :as colors]
@@ -25,28 +25,28 @@
                     typography/font-semi-bold)}
      (i18n/label :t/sort-communities)]]
    [list-item/list-item
-    {:theme               :dark
+    {:theme               (theme/get-theme)
      :title               (i18n/label :t/alphabetically)
      :accessibility-label :alphabetically
      :icon                :main-icons2/alphabetically
      :on-press            #(hide-sheet-and-dispatch
                             [:communities.core/sort-communities-list :alphabetically])}]
    [list-item/list-item
-    {:theme               :dark
+    {:theme               (theme/get-theme)
      :title               (i18n/label :t/total-members)
      :accessibility-label :total-members
      :icon                :main-icons2/members
      :on-press            #(hide-sheet-and-dispatch
                             [:communities.core/sort-communities-list :total-members])}]
    [list-item/list-item
-    {:theme               :dark
+    {:theme               (theme/get-theme)
      :title               (i18n/label :t/active-members)
      :accessibility-label :active-members
      :icon                :main-icons2/lightning
      :on-press            #(hide-sheet-and-dispatch
                             [:communities.core/sort-communities-list :active-members])}]
    [list-item/list-item
-    {:theme               :dark
+    {:theme               (theme/get-theme)
      :title               (i18n/label :t/mutal-contacts)
      :accessibility-label :mutual-contacts
      :icon                :main-icons2/friend

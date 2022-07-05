@@ -1,4 +1,4 @@
-(ns quo2.components.item-redesign
+(ns quo2.components.item
   (:require [quo.react-native :as rn]
             [quo.platform :as platform]
             [quo.haptic :as haptic]

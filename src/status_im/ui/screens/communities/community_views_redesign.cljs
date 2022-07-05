@@ -178,7 +178,7 @@
                     :align-items       :center}
         [communities.icon/community-icon-redesign community 48]
         [react/view {:margin-left   12
-                     :flex               1}
+                     :flex          1}
          [text/text
           {:style (merge
                    typography/font-semi-bold

@@ -71,7 +71,7 @@
 (defn community-card-chat-icon [color]
   {:border-radius    32
    :position         :absolute
-   :top              -20
+   :top              -24
    :left             12
    :padding          2
    :background-color color})
