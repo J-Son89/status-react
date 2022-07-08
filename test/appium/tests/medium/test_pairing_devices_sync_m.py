@@ -114,7 +114,6 @@ class TestPairingSyncMediumMultipleDevicesMerged(MultipleSharedDeviceTestCase):
             self.errors.append('Accept new chats is not set to contacts value on synced device')
 
         self.profile_2.just_fyi('Check see/show pictures settings are set to everyone/none')
-        # self.profile_2.show_profile_pictures_to.scroll_to_element()
         self.profile_2.delete_my_profile_button.scroll_to_element()
         if not self.profile_2.element_by_translation_id('everyone').is_element_displayed():
             self.errors.append('See pictures from setting is not set to everyone on synced device')
@@ -148,7 +147,6 @@ class TestPairingSyncMediumMultipleDevicesMerged(MultipleSharedDeviceTestCase):
             self.errors.append('Accept new chats is not set to anyone value on paired device')
 
         self.profile_1.just_fyi('Check see/show pictures settings are set to contacts/contacts')
-        # self.profile_1.show_profile_pictures_to.scroll_to_element()
         self.profile_1.delete_my_profile_button.scroll_to_element()
         if not self.profile_1.element_by_translation_id('anyone').is_element_displayed():
             self.errors.append('See/show pictures from setting is not set to contacts on paired device')
