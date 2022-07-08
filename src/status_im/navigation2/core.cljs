@@ -32,11 +32,11 @@
   (str comp "-" id))
 
 (defn get-options [show-topbar? options]
-  (if show-topbar?
-    (merge options
-           (nav-roots/status-bar-options)
-           (nav-roots/merge-top-bar (nav-roots/topbar-options) options))
-    {:topBar {:visible false}}))
+  (merge options
+         (nav-roots/status-bar-options)
+         (if show-topbar?
+           (nav-roots/merge-top-bar (nav-roots/topbar-options) options)
+           {:topBar {:visible false}})))
 
 (defn change-stack-root [[comp _]]
   (let [{:keys [options]} (get views/screens comp)]
