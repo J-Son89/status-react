@@ -267,6 +267,8 @@
 (reg-root-key-sub :wallet-connect/session-managed :wallet-connect/session-managed)
 (reg-root-key-sub :contact-requests/pending :contact-requests/pending)
 
+; media-server
+(reg-root-key-sub :mediaserver/port :mediaserver/port)
 
 ; Testing
 
@@ -1283,14 +1285,11 @@
  :chats/photo-path
  :<- [:contacts/contacts]
  :<- [:multiaccount]
- (fn [[contacts multiaccount] [_ id identicon]]
-   (let [contact (or (get contacts id)
-                     (when (= id (:public-key multiaccount))
-                       multiaccount)
-                     (if (not (string/blank? identicon))
-                       {:identicon identicon}
-                       (contact.db/public-key->new-contact id)))]
-     (multiaccounts/displayed-photo contact))))
+ :<- [:mediaserver/port]
+ (fn [[contacts _ port] [_ id]]
+   ; We pass the clock so that we reload the image if the thumbnail is updated
+   (let [clock (or (get-in contacts [id :images :thumbnail :clock]) 0)]
+     (str "https://localhost:" port "/identityImages?publicKey=" id "&clock=" clock))))
 
 (re-frame/reg-sub
  :contacts/name-and-photo

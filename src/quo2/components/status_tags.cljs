@@ -33,16 +33,22 @@
        (assoc (if (= size :small)
                 small-container-style
                 large-container-style)
+              :border-width 1
               :border-color border-color
               :background-color background-color)
-       [text/text {:size paragraph-size}
-        [icon/icon-for-theme
-         icon
-         theme
-         {:color :none
-          :size 12}]
+       [rn/view {:flex-direction :row
+                 :flex 1}
+        [rn/view {:style {:justify-content :center
+                          :align-items :center}}
+         [icon/icon-for-theme
+          icon
+          theme
+          {:no-color true
+           :size 12}]]
         [text/text {:size paragraph-size
-                    :style {:color text-color}} (str " " label)]]])))
+                    :weight :medium
+                    :style {:padding-left 5
+                            :color text-color}} label]]])))
 
 (defn positive [_ _]
   (fn [size theme]

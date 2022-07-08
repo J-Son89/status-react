@@ -10,7 +10,7 @@
 
 (def paragraph-1 {:font-size   15
                   :line-height 21.75
-                  :letter-spacing -0.1})
+                  :letter-spacing -0.533})
 
 (def paragraph-2 {:font-size   13
                   :line-height 18.2
